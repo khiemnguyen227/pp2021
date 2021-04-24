@@ -1,11 +1,3 @@
-# student management
-Student = []
-StudentID = []
-Course = []
-CourseID = []
-Mark = []
-
-
 # Input of number of student
 def totalnumberofstudent():
     student_class = int(input("Enter the number of student:"))
@@ -56,7 +48,7 @@ def add_course():
 
 
 # Create mark for students
-def mark_mana():
+def create_mark():
     g = 1
     tu = len(Student)
     while g <= tu:
@@ -103,7 +95,6 @@ def show_mark():
 
 
 # main
-# recall student
 s = int(totalnumberofstudent())
 l = 1
 while l <= s:
@@ -111,7 +102,7 @@ while l <= s:
     add_student()
 show_list_student()
 
-# recall course
+
 c = int(number_course())
 p = 1
 while p <= c:
@@ -119,12 +110,8 @@ while p <= c:
     add_course()
 show_list_course()
 
-# Recall student mark
-mark_mana()
 
-print("""Choose your options: """)
-print("1.YES")
-print("2.NO")
+create_mark()
 for i in range(0, len(Course)):
     ol = int(input("Your option is: "))
     if ol == 1:

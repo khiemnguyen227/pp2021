@@ -32,6 +32,7 @@ class InputModule:
         Student.append(st_u)
         return st_u
     stuinfo = add_student()
+    file = open('students.txt', "w")
     file.write("Student's info: " + str(stuinfo))
     file.close()
     # Add number of course

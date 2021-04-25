@@ -1,34 +1,39 @@
-# Input of number of student
+Student = []
+StudentID = []
+Course = []
+CourseID = []
+Mark = []
+
+
+# Input total number of students
 def student_num():
-    student_class = int(input("Enter the number of student:"))
-    if (student_class <= 0):
-        print("Student must be higher than 0")
-        return 'False'
-    else:
-        return student_class
+    print("---- TOTAL NUMBER OF STUDENTS----")
+    student = int(input("Enter total number of student:"))
+    return student
 
 
 # Add student information
+    # Add student
 def add_student():
-    print("--Add student information--" )
-
-    id = input("Enter student's ID:")
-    name = input("Enter student's NAME:")
-    dob = input("Enter student's DOB:")
-    stinfor = {
+    print("-----ADD A STUDENT-----")
+    id = input("Enter Student's ID: ")
+    name = input("Enter Student's NAME: ")
+    dob = input("Enter Student's DOB: ")
+    st_u = {
         'id': id,
         'name': name,
         'dob': dob
-    }
+        }
     StudentID.append(id)
-    Student.append(stinfor)
+    Student.append(st_u)
+    return st_u
 
 
 # Input number of course
-def number_course():
+def course_num():
     print("Course number ")
     coursenumber = int(input("Enter the number of course :"))
-    if (coursenumber <= 0):
+    if coursenumber <= 0:
         print("Number of course must higher than 0")
         return 0
     else:
@@ -39,11 +44,11 @@ def number_course():
 def add_course():
     name = input("Enter course's NAME:")
     id = input("Enter course's ID: ")
-    course_f = {
+    cr_o = {
         'name': name,
         'id': id
     }
-    Course.append(course_f)
+    Course.append(cr_o)
     CourseID.append(id)
 
 
@@ -53,15 +58,15 @@ def create_mark():
     tu = len(Student)
     while g <= tu:
         g += 1
-        a = input("Enter the Student ID: ")
-        if a in StudentID:
-            for i in range(0, len(Course)):
-                b = input("Enter the Course ID: ")
-                if b in CourseID:
+        mid = input("Enter the Student ID: ")
+        if mid in StudentID:
+            for i in range(0, len(CourseID)):
+                nid = input("Enter the Course ID: ")
+                if nid in CourseID:
                     mark = float(input("Enter Student Mark: "))
                     kk = {
-                        'a': a,
-                        'b': b,
+                        'mid': mid,
+                        'nid': nid,
                         'mark': mark
                     }
                 else:
@@ -73,21 +78,18 @@ def create_mark():
             break
 
 
-# Show all of student in class
 def show_list_student():
     print("--Student List--")
     for i in range(0, len(Student)):
         print(f"ID:{Student[i]['id']} name:{Student[i]['name']} DoB:{Student[i]['dob']}")
 
 
-# Show all of student course
 def show_list_course():
     print("--COURSE LIST--")
     for i in range(0, len(Course)):
         print(f"ID:{Course[i]['id']}  name : {Course[i]['name']}")
 
 
-# Show the mark of student
 def show_mark():
     print("STUDENTS MARK LIST")
     for i in range(0, len(Mark)):
@@ -103,7 +105,7 @@ while l <= s:
 show_list_student()
 
 
-c = int(number_course())
+c = int(course_num())
 p = 1
 while p <= c:
     p += 1
@@ -113,7 +115,7 @@ show_list_course()
 
 create_mark()
 for i in range(0, len(Course)):
-    ol = int(input("Your option is: "))
+    ol = int(input("You Choose: "))
     if ol == 1:
         print("--STUDENT MARK--")
         show_mark()

@@ -1,0 +1,1 @@
+Course's info: {'cid': '1', 'cname': '2', 'cc': '3'}

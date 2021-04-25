@@ -1,0 +1,1 @@
+Student's ID: 1Student's info: {'id': '123', 'name': 'asd', 'dob': '2'}

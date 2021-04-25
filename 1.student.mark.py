@@ -32,12 +32,8 @@ def add_student():
 # Input number of course
 def course_num():
     print("Course number ")
-    coursenumber = int(input("Enter the number of course :"))
-    if coursenumber <= 0:
-        print("Number of course must higher than 0")
-        return 0
-    else:
-        return coursenumber
+    course = int(input("Enter the number of course :"))
+    return course
 
 
 # Add Course
@@ -64,7 +60,7 @@ def create_mark():
                 nid = input("Enter the Course ID: ")
                 if nid in CourseID:
                     mark = float(input("Enter Student Mark: "))
-                    kk = {
+                    m_add = {
                         'mid': mid,
                         'nid': nid,
                         'mark': mark
@@ -72,7 +68,7 @@ def create_mark():
                 else:
                     print("Student ID NOT FOUND !!")
                     break
-                Mark.append(kk)
+                Mark.append(m_add)
         else:
             print("Course ID NOT FOUND !!")
             break
@@ -91,9 +87,9 @@ def show_list_course():
 
 
 def show_mark():
-    print("STUDENTS MARK LIST")
+    print("--STUDENTS MARK LIST--")
     for i in range(0, len(Mark)):
-        print(f"ID-course: {Mark[i]['b']} ID-Student: {Mark[i]['a']}  mark:{Mark[i]['mark']}")
+        print(f"ID-course: {Mark[i]['nid']} ID-Student: {Mark[i]['mid']}  mark:{Mark[i]['mark']}")
 
 
 # main
@@ -115,6 +111,7 @@ show_list_course()
 
 create_mark()
 for i in range(0, len(Course)):
+    print("Show mark? 1. YES  2. NO")
     ol = int(input("You Choose: "))
     if ol == 1:
         print("--STUDENT MARK--")

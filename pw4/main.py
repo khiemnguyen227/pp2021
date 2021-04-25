@@ -22,13 +22,16 @@ class MainModule:
         add_course()
     show_list_course()
 
-# GPA
-    mark_gpa()
-
     create_mark()
     for i in range(0, len(Course)):
+        print("Show mark? 1. YES  2. NO")
         ol = int(input("You Choose: "))
         if ol == 1:
             print("--STUDENT MARK--")
         show_mark()
         break
+
+
+# GPA
+mark_gpa()
+mark_cal()

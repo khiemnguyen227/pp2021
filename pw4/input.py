@@ -30,12 +30,13 @@ class InputModule:
         studentIDs.append(id)
         studentIDs.append(st_u)
 
+
     # Add number of course
     @staticmethod
     def course_num():
         print("---- ADD NUMBER OF COURSE----")
         course = int(input("Enter total number of course: "))
-        return
+        return course
 
     # Add course
     @staticmethod
@@ -65,7 +66,7 @@ class InputModule:
                     nid = input("Enter the Course ID: ")
                     if nid in CourseID:
                         mark = float(input("Enter Student Mark: "))
-                        kk = {
+                        m_add = {
                             'mid': mid,
                             'nid': nid,
                             'mark': mark
@@ -73,35 +74,33 @@ class InputModule:
                     else:
                         print("Student ID NOT FOUND !!")
                         break
-                    Mark.append(kk)
+                    Mark.append(m_add)
             else:
                 print("Course ID NOT FOUND !!")
                 break
 
-    def mark_gpa():
 
-        int = numpy.array([self.mark])
-        null = numpy.array([self._ccredit])
-        strace.addstr("Enter Student's ID:")
-        id = strace.getstr().decode()
-        if id in StudentIDs:
-            for i in range(0, len(Students)):
-                marktotal = numpy.sum(null)
-                gpatotal = numpy.sum(numpy.multiply(int, null))
-                strace.refresh()
-                gpa = gpatotal / marktotal
-                strace.refresh()
+def mark_gpa():
+    print("---GPA Calculation---")
+    value = numpy.array([Mark])
+    points = numpy.array([Credit])
+    print("Enter Student's ID to calculate: ")
+    mid = input("Enter Student's ID: ")
+    if mid in StudentID:
+        for i in range(len(Mark)):
+            totalCredit = numpy.sum(points)
+            totalValue = numpy.sum(numpy.multiply(value, points))
+            gpa = totalValue / totalCredit
+    else:
+        return 0
+    MarkGPA.append(gpa)
 
-        else:
-            return 0
-        print(gpa)
 
-        MarkGPA.append(gpa)
-        strace.refresh()
-        for point in Mark:
-            strace.clear()
-            strace.refresh()
-            strace.addstr(" [Mark: ] %s   [GPA: ]%s \n" % (mark.get_id(), gpa))
-            strace.refresh()
+def mark_cal():
+    print("---GPA---")
+    MarkGPA.append(gpa)
+    for m in Mark:
+        print(f"Course ID: {Mark[i]['nid']} Student ID: {Mark[i]['mid']}  Gpa: " % gpa)
+        break
 
-            break
+

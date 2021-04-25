@@ -12,6 +12,14 @@ Credit = []
 gpa = []
 MarkGPA = []
 
+print("Magic things about to happen....")
+screen = curses.initscr()
+print("Approved")
+screen.refresh()
+curses.napms(3000)
+curses.endwin()
+print("Ended")
+
 
 class Students:
     def __init__(self, id, name, dob):
@@ -35,19 +43,19 @@ class Courses:
     def __init__(self, cid, cname, ccredit):
         self._cid = cid
         self._cname = cname
-        self._ccredit = ccredits
+        self._ccredit = ccredit
         Course.append(self)
         CourseID.append(self._cid)
         Credit.append(self._ccredit)
 
     def get_id(self):
-        return self._cid
+        return self.cid
 
     def get_name(self):
         return self.cname
 
     def get_credit(self):
-        return self._ccredit
+        return self.ccredit
 
 
 class Marks:
@@ -55,6 +63,7 @@ class Marks:
         self._mid = mid
         self._nid = nid
         self._mark = mark
+        self._gpa = gpa
         Mark.append(self)
 
     def get_mid(self):
@@ -98,7 +107,7 @@ def add_student():
 def course_num():
     print("---- ADD NUMBER OF COURSE----")
     course = int(input("Enter total number of course: "))
-    return
+    return course
 
 
 # Add course
@@ -122,60 +131,50 @@ def create_mark():
     tu = len(Student)
     while g <= tu:
         g += 1
-        mid = input("Enter the Student ID: ")
-        if mid in Student:
-            for i in range(0, len(CourseID)):
-                nid = input("Enter the Course ID: ")
+        mid = input("Enter Student's ID: ")
+        if mid in StudentID:
+            for i in range(0, len(Course)):
+                nid = input("Enter Course's ID: ")
                 if nid in CourseID:
-                    mark = float(input("Enter Student Mark: "))
-                    kk = {
+                    mark = math.floor(float(input("Enter Student's Mark: ")))
+                    m_add = {
                         'mid': mid,
                         'nid': nid,
-                        'mark': mark
+                        'Mark': mark
+
                     }
-                else:
-                    print("Student ID NOT FOUND !!")
-                    break
-                Mark.append(kk)
-        else:
-            print("Course ID NOT FOUND !!")
-            break
+                Mark.append(m_add)
 
 
 def mark_gpa():
-
-    int = numpy.array([self.mark])
-    null = numpy.array([self._ccredit])
-    strace.addstr("Enter Student's ID:")
-    id = strace.getstr().decode()
-    if id in StudentID:
-        for i in range(0, len(Student)):
-            marktotal = numpy.sum(null)
-            gpatotal = numpy.sum(numpy.multiply(int, null))
-            strace.refresh()
-            gpa = gpatotal / marktotal
-            strace.refresh()
-
+    print("---GPA Calculation---")
+    value = numpy.array([Mark])
+    points = numpy.array([Credit])
+    print("Enter Student's ID to calculate: ")
+    mid = input("Enter Student's ID: ")
+    if mid in StudentID:
+        for i in range(len(Mark)):
+            totalCredit = numpy.sum(points)
+            totalValue = numpy.sum(numpy.multiply(value, points))
+            gpa = totalValue / totalCredit
     else:
         return 0
-    print(gpa)
-
     MarkGPA.append(gpa)
-    strace.refresh()
-    for point in Mark:
-        strace.clear()
-        strace.refresh()
-        strace.addstr(" [Mark: ] %s   [GPA: ]%s \n" % (mark.get_id(), gpa))
-        strace.refresh()
 
+
+def mark_cal():
+    print("---GPA---")
+    MarkGPA.append(gpa)
+    for m in Mark:
+        print(f"Course ID: {Mark[i]['nid']} Student ID: {Mark[i]['mid']}  Gpa: " % gpa)
         break
 
 
 def gpa_sort():
-    sortg = numpy.array([MarkGPA])
-    sortg[::-1].sort()
-    strace.addstr("GPA Sorted %s: \n" % sortg)
-    strace.refresh()
+    arr = numpy.array([gpa_sort()])
+    arr[::-1].sort()
+    print("=====LIST====")
+    print("The list is %s:\n" % arr)
 
 
 def show_list_student():
@@ -187,13 +186,12 @@ def show_list_student():
 def show_list_course():
     print("----COURSE LIST----")
     for i in range(0, len(Course)):
-        print(f"ID:{Course[i]['id']}  name : {Course[i]['name']}")
+        print(f"ID:{Course[i]['cid']}  name : {Course[i]['cname']}")
 
 
 def show_mark():
-    print("----STUDENTS MARK LIST----")
     for i in range(0, len(Mark)):
-        print(f"ID-course: {Mark[i]['b']} ID-Student: {Mark[i]['a']}  mark:{Mark[i]['mark']}")
+        print(f"Course ID: {Mark[i]['nid']} Student ID: {Mark[i]['mid']}  Mark:{Mark[i]['Mark']}")
 
 
 # main
@@ -211,16 +209,14 @@ while p <= c:
     add_course()
     show_list_course()
 
-# GPA
-mark_gpa()
-
-
 create_mark()
 for i in range(0, len(Course)):
-    ol = int(input("You Choose: "))
-    if ol == 1:
+    print("Show mark? 1. YES  2. NO")
+    choose = int(input("You Choose: "))
+    if choose == 1:
         print("--STUDENT MARK--")
         show_mark()
         break
-    else:
-        break
+
+mark_gpa()
+mark_cal()

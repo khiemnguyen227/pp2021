@@ -8,8 +8,6 @@ StudentID = []
 Course = []
 CourseID = []
 Mark = []
-ccredit = []
-gpa = []
 
 
 class Students:
@@ -43,7 +41,6 @@ class Courses:
 
     def get_name(self):
         return self.cname
-
 
 
 class Marks:
@@ -86,8 +83,8 @@ def add_student():
         'name': name,
         'dob': dob
     }
-    studentIDs.append(id)
-    studentIDs.append(st_u)
+    Student.append(st_u)
+    StudentID.append(id)
 
 
 # Add number of course
@@ -120,7 +117,7 @@ def create_mark():
         g += 1
         mid = input("Enter the Student ID: ")
         if mid in Student:
-            for i in range(0, len(Course)):
+            for i in range(0, len(CourseID)):
                 nid = input("Enter the Course ID: ")
                 if nid in CourseID:
                     mark = float(input("Enter Student Mark: "))
@@ -164,19 +161,16 @@ while l <= s:
     add_student()
 show_list_student()
 
-c = int(number_course())
+c = int(course_num())
 p = 1
 while p <= c:
     p += 1
     add_course()
 show_list_course()
 
-# GPA
-mark_gpa()
-
 
 create_mark()
-for i in range(0, len(Course)):
+for i in range(0, len(CourseID)):
     ol = int(input("You Choose: "))
     if ol == 1:
         print("--STUDENT MARK--")

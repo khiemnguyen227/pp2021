@@ -1,55 +1,69 @@
-class Student:
+import math
+import numpy
+import curses
+
+#
+Student = []
+StudentID = []
+Course = []
+CourseID = []
+Mark = []
+ccredit = []
+gpa = []
+
+
+class Students:
     def __init__(self, id, name, dob):
         self.__id = id
         self.__name = name
         self.__dob = dob
-
-    Student.append(self)
-    StudentID.append(self.__id)
+        Student.append(self)
+        StudentID.append(self.__id)
 
     def get_id(self):
-        return self.__id
+        return self.id
 
     def get_name(self):
-        return self.__name
+        return self.name
 
     def get_dob(self):
-        return self.__dob
+        return self.dob
 
 
-class Course:
-
+class Courses:
     def __init__(self, cid, cname):
-        self.cid = cid
-        self.cname = cname
+        self._cid = cid
+        self._cname = cname
 
-    Course.append(self)
-    CourseID.append(Self.cid)
+        Course.append(self)
+        CourseID.append(self._cid)
 
-    def get_cid(self):
-        return self.cid
+    def get_id(self):
+        return self._cid
 
     def get_name(self):
-        return self.cid
+        return self.cname
 
 
-class Mark:
 
-    def __init__(self, a, b, mark):
-        self.a = a
-        self.b = b
-        self.mark = mark
+class Marks:
+    def __init__(self, mid, nid, mark):
+        self._mid = mid
+        self._nid = nid
+        self._mark = mark
+        Mark.append(self)
 
-    Mark.append(sefl)
+    def get_mid(self):
+        return self.mid
 
-    def get_a(self):
-        return self.a
-
-    def get_b(self):
-        return self.b
+    def get_nid(self):
+        return self.nid
 
     def get_mark(self):
         return self.mark
+
+    def get_gpa(self):
+        return self.gpa
 
 
 # Input number of students
@@ -72,8 +86,8 @@ def add_student():
         'name': name,
         'dob': dob
     }
-    studentID.append(id)
-    student.append(st_u)
+    studentIDs.append(id)
+    studentIDs.append(st_u)
 
 
 # Add number of course
@@ -88,9 +102,11 @@ def add_course():
     print("---- ADD A COURSE ----")
     cid = input("Enter Course's ID: ")
     cname = input("Enter Course's NAME: ")
+    cc = input("Enter Course's Credit:")
     cr_o = {
         'cid': cid,
-        'cname': cname
+        'cname': cname,
+        'cc': cc
     }
     Course.append(cr_o)
     CourseID.append(cid)
@@ -102,15 +118,15 @@ def create_mark():
     tu = len(Student)
     while g <= tu:
         g += 1
-        a = input("Enter the Student ID: ")
-        if a in StudentID:
+        mid = input("Enter the Student ID: ")
+        if mid in Student:
             for i in range(0, len(Course)):
-                b = input("Enter the Course ID: ")
-                if b in CourseID:
+                nid = input("Enter the Course ID: ")
+                if nid in CourseID:
                     mark = float(input("Enter Student Mark: "))
                     kk = {
-                        'a': a,
-                        'b': b,
+                        'mid': mid,
+                        'nid': nid,
                         'mark': mark
                     }
                 else:
@@ -141,7 +157,7 @@ def show_mark():
 
 
 # main
-s = int(totalnumberofstudent())
+s = int(student_num())
 l = 1
 while l <= s:
     l += 1
@@ -155,9 +171,13 @@ while p <= c:
     add_course()
 show_list_course()
 
+# GPA
+mark_gpa()
+
+
 create_mark()
 for i in range(0, len(Course)):
-    ol = int(input("Your option is: "))
+    ol = int(input("You Choose: "))
     if ol == 1:
         print("--STUDENT MARK--")
         show_mark()

@@ -8,7 +8,8 @@ class Marks:
         self._mid = mid
         self._nid = nid
         self._mark = mark
-        Mark.append(self)
+        self._gpa = gpa
+        mark.append(self)
 
     def get_mid(self):
         return self.mid

@@ -6,7 +6,7 @@ class Courses:
     def __init__(self, cid, cname, ccredit):
         self._cid = cid
         self._cname = cname
-        self._ccredit = ccredits
+        self._ccredit = ccredit
         Course.append(self)
         CourseID.append(self._cid)
         Credit.append(self._ccredit)

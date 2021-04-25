@@ -1,5 +1,5 @@
 # Input of number of student
-def totalnumberofstudent():
+def student_num():
     student_class = int(input("Enter the number of student:"))
     if (student_class <= 0):
         print("Student must be higher than 0")
@@ -95,7 +95,7 @@ def show_mark():
 
 
 # main
-s = int(totalnumberofstudent())
+s = int(student_num())
 l = 1
 while l <= s:
     l += 1

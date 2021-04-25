@@ -8,8 +8,9 @@ StudentID = []
 Course = []
 CourseID = []
 Mark = []
-ccredit = []
+Credit = []
 gpa = []
+MarkGPA = []
 
 
 class Students:
@@ -69,7 +70,7 @@ class Marks:
         return self.gpa
 
 
-# Input number of students
+# Input total number of students
 
 def student_num():
     print("---- TOTAL NUMBER OF STUDENTS----")
@@ -89,8 +90,8 @@ def add_student():
         'name': name,
         'dob': dob
     }
-    studentIDs.append(id)
-    studentIDs.append(st_u)
+    Student.append(st_u)
+    StudentID.append(id)
 
 
 # Add number of course
@@ -123,7 +124,7 @@ def create_mark():
         g += 1
         mid = input("Enter the Student ID: ")
         if mid in Student:
-            for i in range(0, len(Course)):
+            for i in range(0, len(CourseID)):
                 nid = input("Enter the Course ID: ")
                 if nid in CourseID:
                     mark = float(input("Enter Student Mark: "))
@@ -147,8 +148,8 @@ def mark_gpa():
     null = numpy.array([self._ccredit])
     strace.addstr("Enter Student's ID:")
     id = strace.getstr().decode()
-    if id in StudentIDs:
-        for i in range(0, len(Students)):
+    if id in StudentID:
+        for i in range(0, len(Student)):
             marktotal = numpy.sum(null)
             gpatotal = numpy.sum(numpy.multiply(int, null))
             strace.refresh()
@@ -171,9 +172,9 @@ def mark_gpa():
 
 
 def gpa_sort():
-    sortg = numpyp.array([MarkGPA])
+    sortg = numpy.array([MarkGPA])
     sortg[::-1].sort()
-    screen.addstr("GPA Sorted %s: \n" % sortg)
+    strace.addstr("GPA Sorted %s: \n" % sortg)
     strace.refresh()
 
 
@@ -201,14 +202,14 @@ l = 1
 while l <= s:
     l += 1
     add_student()
-show_list_student()
+    show_list_student()
 
-c = int(number_course())
+c = int(course_num())
 p = 1
 while p <= c:
     p += 1
     add_course()
-show_list_course()
+    show_list_course()
 
 # GPA
 mark_gpa()
